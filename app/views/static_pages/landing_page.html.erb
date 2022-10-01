@@ -1,2 +1,8 @@
-<h1>StaticPages#landing_page</h1>
-<p>Find me in app/views/static_pages/landing_page.html.erb</p>
+
+<%if current_user.perfil.codigo == 'admin'%>
+    <h1>Hola Administrador Bienvenido!</h1>
+<%else%>
+    <h1>Hola Encargado de Inventario Bienvenido!</h1>
+<%end%>
+
+
