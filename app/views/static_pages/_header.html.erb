@@ -4,5 +4,10 @@
         <%= image_tag("logo-2.png", class: "imgen-logo", width:"70")%>
     </div>
     <a class="navbar-brand">Consejo Legislativo de Miranda</a>
+      <%if current_user%>
+      <%=link_to(destroy_user_session_path, data:{turbo_method: :delete}) do%>
+         <%= image_tag("sesion.png", class: "img-fluid", width:"30")%>
+      <%end%>
+    <%end%>
   </div>
 </nav>
