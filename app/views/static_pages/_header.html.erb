@@ -11,3 +11,10 @@
     <%end%>
   </div>
 </nav>
+  <%if user_signed_in?%>
+    <%if current_user.perfil.codigo !="admin"%>
+      <p>Encargado de Almacen</p>
+    <%else%>
+      <p>Administrador</p>
+    <%end%>
+  <%end%>

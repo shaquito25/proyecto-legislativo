@@ -1,8 +1,61 @@
+<div class="container">
+    <div class="row">
+        <div>
+        <%if current_user%>
+                <div style="text-align: center;">
+                    <%if current_user.perfil.isAdmin?%>
+                        <div style="text-align: center;">
+                            <div class="row justify-content-center align-items-center icon-container">
+                                <div class="col-6 col-md-4 col-lg-3 pt-4">
+                                    <%= link_to(root_path, class: "nav-link", :'aria-expanded' => "false", :'role' => "button") do %>
+                                        <div>
+                                            <%= image_tag("solicitud-2.png", class: "img-fluid", width:"120")%>
+                                        </div>
+                                        <h5 class="icono">
+                                            Solicitudes
+                                        </h5>
+                                    <% end %>
+                                    <%= select_tag "ir", options_for_select([["Opciones ...", "#"], ["Nueva Solicitud", root_path], ["Listado de Solicitudes", root_path]]),:onchange => "window.location.replace(this.value);", :class => "nav-link form-control text-center", :style=>"padding: 0px !important;border: none !important;"%>
+                                </div>
+                                <div class="col-6 col-md-4 col-lg-3">
+                                    <%= link_to(root_path, class: "nav-link", :'aria-expanded' => "false", :'role' => "button") do %>
+                                        <div>
+                                            <%= image_tag("reportes-2.png", class: "img-fluid", width:"120")%>
+                                        </div>
+                                        <h5 class="icono">
+                                            Reportes
+                                        </h5>
+                                    <% end %>
+                                </div>
 
-<%if current_user.perfil.codigo == 'admin'%>
-    <h1>Hola Administrador Bienvenido!</h1>
-<%else%>
-    <h1>Hola Encargado de Inventario Bienvenido!</h1>
-<%end%>
-
-
+                                <div class="col-6 col-md-4 col-lg-3">
+                                    <%= link_to(root_path, class: "nav-link", :'aria-expanded' => "false", :'role' => "button") do %>
+                                        <div>
+                                            <%= image_tag("almacen.png", class: "img-fluid", width:"120")%>
+                                        </div>
+                                        <h5 class="icono">
+                                            Inventario
+                                        </h5>
+                                    <% end %>
+                                </div>
+                            </div>
+                        </div>
+                    <%elsif current_user.perfil.isInv?%>
+                    <div class="d-flex justify-content-center align-items-center icon-container">
+                        <div class="col-6 col-md-4 col-lg-3">
+                            <%= link_to(root_path, class: "nav-link", :'aria-expanded' => "false", :'role' => "button") do %>
+                                <div>
+                                    <%= image_tag("almacen.png", class: "img-fluid", width:"120")%>
+                                </div>
+                                <h5 class="icono">
+                                    Inventario
+                                </h5>
+                            <% end %>
+                        </div>
+                    </div>
+                    <%end%>
+                </div>
+            </div>
+        <%end%>
+    </div>
+</div>
