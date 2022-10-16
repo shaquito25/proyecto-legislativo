@@ -43,6 +43,9 @@ gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 gem "bootsnap", require: false
 gem 'devise'
 gem 'bootstrap', '~> 5.2.1'
+gem 'haml'
+gem 'simple_form'
+gem "font-awesome-sass", "~> 6.2.0"
 
 # Use Sass to process CSS
 # gem "sassc-rails"

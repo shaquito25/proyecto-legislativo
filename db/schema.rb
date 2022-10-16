@@ -10,9 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_01_131446) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_08_175952) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "expedients", force: :cascade do |t|
+    t.string "name"
+    t.string "surname"
+    t.string "person_type"
+    t.string "age"
+    t.date "birth_date"
+    t.integer "request_quantity"
+    t.string "document"
+    t.string "email"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "perfil_id", null: false
+    t.index ["perfil_id"], name: "index_expedients_on_perfil_id"
+  end
 
   create_table "perfils", force: :cascade do |t|
     t.string "nombre"
@@ -35,5 +50,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_01_131446) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "expedients", "perfils"
   add_foreign_key "users", "perfils"
 end

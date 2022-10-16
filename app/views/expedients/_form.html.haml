@@ -1,0 +1,36 @@
+.row.justify-content-center.form-container
+    .col-10.col-sm-6.col-md-6.col-lg-6
+        = simple_form_for(@expedient) do |f|
+            = f.error_notification
+            = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
+            =f.input :perfil_id, as: :hidden
+            .p-2
+                = f.label "Nombre:"
+                = f.input_field :name, label: "Nombre: ", class:"form-control", required: true
+            .p-2
+                = f.label "Apellido:"
+                = f.input_field :surname, label: "Apellido: ", class:"form-control", required: true
+            .p-2
+                = f.label "Tipo de Persona:"
+                = f.select :person_type, options_for_select([["Natural", "Natural"], ["Juridico", "Juridico"]]), {prompt: "Selecciona"}, class:"form-select", required:true
+            .p-2
+                = f.label "Documento de Identidad:"
+                = f.input_field :document, label: "Documento de Identidad:", class:"form-control"
+            .p-2
+                = f.label "Edad:"
+                = f.input_field :age, label: "Edad: ", class:"form-control"
+            .p-2
+                = f.label "Fecha de Nacimiento:"
+                = f.date_field :birth_date, class:"form-control"
+            .p-2
+                = f.label "Cantidad Solicitada:"
+                = f.input_field :request_quantity, label: "Cantidad Solicitada:" , class:"form-control"
+
+            .p-2
+                = f.label "Email:"
+                = f.input_field :email, label: "Email:", class:"form-control"
+            .p-2
+                = link_to "Regresar", expedients_path, class: "btn btn-secondary border-r-20"
+                = f.submit "Guardar cambios", class: "btn btn-primary border-r-20"
+
+

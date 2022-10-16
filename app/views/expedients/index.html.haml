@@ -1,0 +1,56 @@
+.container
+  .row.justify-content-center
+    .col-10.col-sm-6.col-md-6.col-lg-4
+      .d-grid.gap-2
+        = link_to new_expedient_path , class: "btn btn-outline-primary border-r-20 f-20 negro" do
+          Nueva Solicitud
+
+.container-fluid
+  .row
+    .col-10.col-sm-10.col-md-9.col-lg-12
+      %br/
+      -if !@expedients.blank?
+        %h2 Solicitudes
+        .tabla-scroll.mb-3
+          %table.table.table-striped.mb-0
+            %thead
+              %tr 
+                %th.text-center Nombre 
+                %th.text-center Apellido 
+                %th.text-center Natural/Juridico
+                %th.text-center Documento de identidad 
+                %th.text-center Edad
+                %th.text-center Fecha de nacimiento
+                %th.text-center Cantidad Solicitada
+                %th.text-center Email
+                %th.text-center Acción
+
+              %tbody
+                - @expedients.each do |expedient|
+                  %tr
+                  %td.text-center= expedient.name
+                  %td.text-center= expedient.surname
+                  %td.text-center= expedient.person_type
+                  %td.text-center= expedient.document
+                  %td.text-center= expedient.age
+                  %td.text-center= expedient.birth_date
+                  %td.text-center= expedient.request_quantity
+                  %td.text-center= expedient.email
+                  %td.text-center
+                    = link_to edit_expedient_path(expedient.id), class: "btn btn-primary btn-sm me-1 mt-1", title: "Editar" do
+                      %i{class: "fas fa-edit"}
+                    = link_to expedient_path(expedient.id), class: "btn btn-primary btn-sm me-1 mt-1", title: "Ver Solicitud" do
+                      %i{class: "fa-solid fa-eye"}
+                    = button_to expedient, method: :delete, data: { confirm: '¿Estas seguro que deseas eliminar la encuesta?' }, class: "btn btn-primary btn-sm me-1 mt-1", title:"Eliminar" do
+                      %i{class: "fas fa-trash"}
+                  -# - if !poll.poll_active
+                  -#   - claseIcono = "fas fa-toggle-off"
+                  -#   - label = "Habilitar"
+                  -# - else
+                  -#   - claseIcono = "fas fa-toggle-on"
+                  -#   - label = "Deshabilitar"
+                  -# = link_to polls_habilitar_encuesta_path(poll_id: poll.id), method: :post, class: "btn btn-primary btn-sm me-1 mt-1", title: "#{label}" do
+                  -#   %i{class: "#{claseIcono}"}
+                        
+      .col-10.col-sm-7.col-md-8.col-lg-12.text-end
+        = link_to "Regresar", root_path, class: "btn btn-secondary border-r-20" 

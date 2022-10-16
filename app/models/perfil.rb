@@ -1,7 +1,7 @@
 class Perfil < ApplicationRecord
     has_many :users
-    has_many :expedients
-
+    belongs_to :expedient, optional: true
+    
     def isAdmin?
         codigo =="admin"
     end

@@ -2,8 +2,8 @@ namespace :db do
 	desc "Carga de Usuarios y Perfiles Para la Plataforma."
 
     task cargar_data: :environment do
-		cargar_usuarios
 		cargar_perfiles
+		cargar_usuarios
 	end
 
     def cargar_usuarios
