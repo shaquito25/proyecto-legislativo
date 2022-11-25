@@ -3,16 +3,19 @@
         = simple_form_for(@expedient) do |f|
             = f.error_notification
             = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
-            =f.input :perfil_id, as: :hidden
+            = f.input :perfil_id, as: :hidden
             .p-2
                 = f.label "Nombre:"
-                = f.input_field :name, label: "Nombre: ", class:"form-control", required: true
+                = f.input_field :name, label: "Nombre: ", class:"form-control"
             .p-2
                 = f.label "Apellido:"
-                = f.input_field :surname, label: "Apellido: ", class:"form-control", required: true
+                = f.input_field :surname, label: "Apellido: ", class:"form-control"
             .p-2
                 = f.label "Tipo de Persona:"
-                = f.select :person_type, options_for_select([["Natural", "Natural"], ["Juridico", "Juridico"]]), {prompt: "Selecciona"}, class:"form-select", required:true
+                = f.select :person_type, options_for_select([["Natural", "Natural"], ["Juridico", "Juridico"]]), {prompt: "Selecciona"}, class:"form-select"
+            .p-2
+                = f.label "Tipo de Solicitud:"
+                = f.select :request_type, options_for_select([["Medicina", "Medicina"], ["Materiales de construccion", "Materiales de construccion"]]), {prompt: "Selecciona"}, class:"form-select"
             .p-2
                 = f.label "Documento de Identidad:"
                 = f.input_field :document, label: "Documento de Identidad:", class:"form-control"

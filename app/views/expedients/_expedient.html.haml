@@ -1,0 +1,38 @@
+.container
+  %h2.text-center
+    Solicitud de
+    =expedient.request_type
+  .tabla-scroll.mb-3.pt-4
+    %table.table.table-striped.mb-0
+      %thead
+        %tr 
+          %th.text-center Nombre 
+          %th.text-center Apellido 
+          %th.text-center Natural/Juridico
+          %th.text-center Documento de identidad 
+          %th.text-center Edad
+          %th.text-center Fecha de nacimiento
+          %th.text-center Cantidad Solicitada
+          %th.text-center Email
+
+        %tbody
+          %tr
+          %td.text-center= expedient.name
+          %td.text-center= expedient.surname
+          %td.text-center= expedient.person_type
+          %td.text-center= expedient.document
+          %td.text-center= expedient.age
+          %td.text-center= expedient.birth_date
+          %td.text-center= expedient.request_quantity
+          %td.text-center= expedient.email
+          -# - if !poll.poll_active
+          -#   - claseIcono = "fas fa-toggle-off"
+          -#   - label = "Habilitar"
+          -# - else
+          -#   - claseIcono = "fas fa-toggle-on"
+          -#   - label = "Deshabilitar"
+          -# = link_to polls_habilitar_encuesta_path(poll_id: poll.id), method: :post, class: "btn btn-primary btn-sm me-1 mt-1", title: "#{label}" do
+          -#   %i{class: "#{claseIcono}"}
+                  
+  .col-10.col-sm-7.col-md-8.col-lg-12.text-end
+  = link_to "Regresar", expedients_path, class: "btn btn-secondary border-r-20" 

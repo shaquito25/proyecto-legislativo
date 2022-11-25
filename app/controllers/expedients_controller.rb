@@ -1,7 +1,7 @@
 class ExpedientsController < ApplicationController
   include ApplicationHelper
   before_action :set_expedient, only: %i[ show edit update destroy ]
-  before_action :check_administrator_permission
+  # before_action :check_administrator_permission
 
   # GET /expedients or /expedients.json
   def index
@@ -67,6 +67,6 @@ class ExpedientsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def expedient_params
-      params.require(:expedient).permit(:name, :surname, :person_type, :age, :birth_date, :request_quantity, :document, :email, :perfil_id)
+      params.require(:expedient).permit(:name, :surname, :person_type, :age, :birth_date, :request_quantity, :document, :email, :perfil_id, :request_type)
     end
 end
