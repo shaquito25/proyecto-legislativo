@@ -46,6 +46,8 @@ gem 'bootstrap', '~> 5.2.1'
 gem 'haml'
 gem 'simple_form'
 gem "font-awesome-sass", "~> 6.2.0"
+gem 'popper_js', '~> 2.11', '>= 2.11.6'
+gem 'jquery-rails', '~> 4.5', '>= 4.5.1'
 
 # Use Sass to process CSS
 # gem "sassc-rails"

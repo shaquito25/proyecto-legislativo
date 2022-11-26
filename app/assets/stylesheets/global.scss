@@ -1,0 +1,282 @@
+// ARCHIVO DE ESTILOS GLOBALES
+/* AZULES */
+$azulBancaribe_1:  #002D62;
+$azulBancaribe_2: #009FE3;
+/* VERDES */
+$verdeBancaribe_1: #0097AC;
+$verdeBancaribe_2: #009A93;
+$verdeBancaribe_3: #73B736;
+/* MAGENTA */
+$magentaBancaribe_1: #E6007E;
+/* NARANJA */
+$naranjaBancaribe_1: #EE7601;
+/* BLANCOS */
+$blanco: #ffffff;
+/* NEGROS */
+$negro: #000000;
+/* BANCARIBE UTILIZA HELVETICA COMO SU FUENTE CORPORATIVA */
+$fuenteBancaribe: 'Helvetica', 'Arial', sans-serif;
+
+/* CONFIGURACIÓN GENERAL */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    font-family: $fuenteBancaribe;
+    &::-webkit-scrollbar {
+        /* Tamaño del scroll en vertical */
+        width: 5px;
+        /* Tamaño del scroll en horizontal */
+        height: 5px;
+        display: block;
+    }
+    &::-webkit-scrollbar-thumb {
+        background: $azulBancaribe_2;
+        border-radius: 4px;
+        &:hover {
+            background: $verdeBancaribe_1;
+            box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2);
+        }
+        &:active {
+            background-color: $azulBancaribe_1;
+        }
+    }
+    &::-webkit-scrollbar-track {
+        background: #e1e1e1;
+        border-radius: 4px;
+        &:hover,
+        &:active {
+            background: #d4d4d4;
+        }
+    }
+}
+/* CLASES GENERALES */
+// TAMAÑOS DE FUENTES
+.f-10{
+    font-size: .625rem;
+}
+.f-20{
+    font-size: 1.25rem;
+}
+.f-24{
+    font-size: 1.5rem;
+}
+.f-30{
+    font-size: 1.875rem;
+}
+.f-40{
+    font-size: 2.5rem;
+}
+.f-50{
+    font-size: 3.125rem;
+}
+.f-60{
+    font-size: 3.75rem;
+}
+.f-70{
+    font-size: 4.375rem;
+}
+.f-80{
+    font-size: 5rem;
+}
+// TAMAÑOS
+.w-10{
+    width: 10%;
+}
+.w-20{
+    width: 20%;
+}
+.w-30{
+    width: 30%;
+}
+.w-40{
+    width: 40%;
+}
+.w-60{
+    width: 60%;
+}
+.w-70{
+    width: 70%;
+}
+.w-80{
+    width: 80%;
+}
+.w-90{
+    width: 90%;
+}
+// BORDES PARA BOTONES
+.border-r-20{
+    border-radius: 20px !important;
+}
+// COLORES DE TEXTOS
+// AZULES
+.azul-bancaribe-1{
+    color: $azulBancaribe_1;
+}
+.azul-bancaribe-2{
+    color: $azulBancaribe_2;
+}
+// VERDES
+.verde-bancaribe-1{
+    color: $verdeBancaribe_1;
+}
+.verde-bancaribe-2{
+    color: $verdeBancaribe_2;
+}
+.verde-bancaribe-3{
+    color: $verdeBancaribe_3;
+}
+// MAGENTA
+.magenta-bancaribe-1{
+    color: $magentaBancaribe_1;
+}
+// NARANJA
+.naranja-bancaribe-1{
+    color: $naranjaBancaribe_1;
+}
+// BLANCOS
+.blanco{
+    color: $blanco !important;
+}
+// NEGROS
+.negro{
+    color: $negro;
+}
+
+// COLORES DE FONDOS
+// AZULES
+.bg-azul-bancaribe-1{
+    background-color: $azulBancaribe_1;
+}
+.bg-azul-bancaribe-2{
+    background-color: $azulBancaribe_2;
+}
+// VERDES
+.bg-verde-bancaribe-1{
+    background-color: $verdeBancaribe_1;
+}
+.bg-verde-bancaribe-2{
+    background-color: $verdeBancaribe_2;
+}
+.bg-verde-bancaribe-3{
+    background-color: $verdeBancaribe_3;
+}
+// MAGENTA
+.bg-magenta-bancaribe-1{
+    background-color: $magentaBancaribe_1;
+}
+// NARANJA
+.bg-naranja-bancaribe-1{
+    background-color: $naranjaBancaribe_1;
+}
+// BLANCOS
+.bg-blanco{
+    background-color: $blanco;
+}
+// NEGROS
+.bg-negro{
+    background-color: $negro;
+}
+
+
+/* MODIFICACIONES A CLASES DE BOOTSTRAP */
+.alert-danger{
+    div{
+        h2{
+            font-size: 1.3rem !important;
+        }
+    }
+}
+// BOTONES DE BOOTSTRAP
+.btn-primary{
+    color: $blanco;
+    background-color: $verdeBancaribe_1;
+    border-color: $verdeBancaribe_1;
+    &:hover,
+    &:focus{
+        background-color: $verdeBancaribe_2;
+        border-color: $verdeBancaribe_2;
+    }
+}
+.btn-outline-primary{
+    color: $azulBancaribe_1;
+    background-color: transparent;
+    border-color: $azulBancaribe_1;
+    &:hover,
+    &:focus{
+        color: $blanco;
+        background-color: $verdeBancaribe_2;
+        border-color: $verdeBancaribe_2;
+    }
+}
+// ENLACES
+.a-primary{
+    color: $azulBancaribe_2;
+    &:hover{
+        color: $verdeBancaribe_1;
+    }
+}
+.a-secondary{
+    color: $azulBancaribe_1;
+    &:hover{
+        color: $azulBancaribe_2;
+    }
+}
+
+/* LA SIGUIENTE CLASE ES PARA OCULTAR UNA VALIDACIÓN QUE SE ESTA IMPRIMIENDO AL CADUCAR LA SESIÓN */
+.class-for-validation{
+    .timedout{
+        display: none;
+    }
+}
+
+/* HR DIVISAR DEL BLOG PERSONALIZADO*/
+.hr-blog{
+    width: 80%;
+    color: $verdeBancaribe_2;
+    background-color: $verdeBancaribe_2;
+    &:not([size]){
+        height: 5px;
+    }
+}
+
+
+/* Scroll para tablas */
+.tabla-scroll{
+    overflow-x: auto;
+    width: 100%;
+    &::-webkit-scrollbar {
+        /* Tamaño del scroll en vertical */
+        width: 5px;
+        /* Tamaño del scroll en horizontal */
+        height: 5px;
+        display: block;
+    }
+    &::-webkit-scrollbar-thumb {
+        background: $azulBancaribe_2;
+        border-radius: 4px;
+        &:hover {
+            background: $verdeBancaribe_1;
+            box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2);
+        }
+        &:active {
+            background-color: $azulBancaribe_1;
+        }
+    }
+    &::-webkit-scrollbar-track {
+        background: #e1e1e1;
+        border-radius: 4px;
+        &:hover,
+        &:active {
+            background: #d4d4d4;
+        }
+    }
+}
+
+@media (min-width: 200px) and (max-width: 900px){
+    .navbar-nav{
+        flex-direction: initial !important;
+    }
+}

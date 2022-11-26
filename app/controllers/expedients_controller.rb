@@ -1,6 +1,7 @@
 class ExpedientsController < ApplicationController
   include ApplicationHelper
   before_action :set_expedient, only: %i[ show edit update destroy ]
+  # after_action :restar_mercancia, only: %i[ create update ]
   # before_action :check_administrator_permission
 
   # GET /expedients or /expedients.json
@@ -36,6 +37,12 @@ class ExpedientsController < ApplicationController
     end
   end
 
+  def restar_mercancia
+    if params[:expedient][:request_type] == 'Medicina'
+       Inventory.create!(medicine_quantity:params[:expedient][:request_quantity].to_i, expedient_id:1)
+    end
+  end
+
   # PATCH/PUT /expedients/1 or /expedients/1.json
   def update
     respond_to do |format|
@@ -67,6 +74,6 @@ class ExpedientsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def expedient_params
-      params.require(:expedient).permit(:name, :surname, :person_type, :age, :birth_date, :request_quantity, :document, :email, :perfil_id, :request_type)
+      params.require(:expedient).permit(:name, :surname, :person_type,:birth_date, :request_quantity, :document, :email, :perfil_id, :request_type)
     end
 end
