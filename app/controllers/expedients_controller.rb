@@ -1,9 +1,8 @@
 class ExpedientsController < ApplicationController
   require 'csv'
   include ApplicationHelper
-  before_action :set_expedient, only: %i[ show edit update destroy ]
+  before_action :set_expedient, only: %i[ show edit update destroy restar]
   after_action :restar, only: %i[create]
-  # before_action :check_administrator_permission
 
   # GET /expedients or /expedients.json
   def index
@@ -37,14 +36,6 @@ class ExpedientsController < ApplicationController
       end
     end
   end
-
-  # def mercancia
-  #   if params[:expedient][:request_type] == 'Medicina'
-  #      Inventory.create!(med:params[:expedient][:request_quantity].to_i, ct:0)
-  #   else
-  #      Inventory.create!(ct:params[:expedient][:request_quantity].to_i, med:0)
-  #   end
-  # end
 
   def restar
     @med = Inventory.sum(:med)
@@ -107,6 +98,6 @@ class ExpedientsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def expedient_params
-      params.require(:expedient).permit(:name, :surname, :person_type,:birth_date, :request_quantity, :document, :email, :perfil_id, :request_type)
+      params.require(:expedient).permit(:name, :surname, :person_type,:birth_date, :request_quantity, :document, :perfil_id, :request_type)
     end
 end

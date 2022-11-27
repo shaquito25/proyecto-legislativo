@@ -22,7 +22,6 @@
                 %th.text-center Fecha de nacimiento
                 %th.text-center Tipo de solicitud
                 %th.text-center Cantidad Solicitada
-                %th.text-center Email
                 %th.text-center Acción
 
               %tbody
@@ -35,7 +34,6 @@
                   %td.text-center= expedient.birth_date.strftime("%d-%m-%Y")
                   %td.text-center= expedient.request_type
                   %td.text-center= expedient.request_quantity
-                  %td.text-center= expedient.email
                   %td.text-center
                     -# = link_to edit_expedient_path(expedient.id), class: "btn btn-primary btn-sm me-1 mt-1", title: "Editar" do
                     -#   %i{class: "fas fa-edit"}

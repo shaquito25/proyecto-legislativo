@@ -10,7 +10,7 @@ es:
         request_type: "Tipo de Solicitud"
   simple_form:
     error_notification:
-      default_message: "Campos Obligatorios:"
+      default_message: "Por favor revisar los siguientes errores:"
   date:
     abbr_day_names:
     - dom
