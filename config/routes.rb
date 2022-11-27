@@ -4,8 +4,6 @@ Rails.application.routes.draw do
   devise_for :users
   get 'static_pages/landing_page'
   get 'static_pages/dashboard'
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
-  # Defines the root path route ("/")
+  match 'reportes_solicitud', to: 'expedients#reportes', via: [:get,:post]
   root "static_pages#landing_page"
 end

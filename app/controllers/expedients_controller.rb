@@ -1,7 +1,8 @@
 class ExpedientsController < ApplicationController
+  require 'csv'
   include ApplicationHelper
   before_action :set_expedient, only: %i[ show edit update destroy ]
-  # after_action :restar_mercancia, only: %i[ create update ]
+  after_action :restar, only: %i[create]
   # before_action :check_administrator_permission
 
   # GET /expedients or /expedients.json
@@ -24,22 +25,54 @@ class ExpedientsController < ApplicationController
 
   # POST /expedients or /expedients.json
   def create
+    @med = Inventory.sum(:med)
+    @ct = Inventory.sum(:ct)
     @expedient = Expedient.new(expedient_params)
     @expedient.perfil_id = current_user.id
     respond_to do |format|
       if @expedient.save
-        format.html { redirect_to expedient_url(@expedient), notice: "Expedient was successfully created." }
-        format.json { render :show, status: :created, location: @expedient }
+        format.html { redirect_to expedient_url(@expedient), notice: "Solicitud Creada con Éxito" }
       else
         format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @expedient.errors, status: :unprocessable_entity }
       end
     end
   end
 
-  def restar_mercancia
+  # def mercancia
+  #   if params[:expedient][:request_type] == 'Medicina'
+  #      Inventory.create!(med:params[:expedient][:request_quantity].to_i, ct:0)
+  #   else
+  #      Inventory.create!(ct:params[:expedient][:request_quantity].to_i, med:0)
+  #   end
+  # end
+
+  def restar
+    @med = Inventory.sum(:med)
+    @ct = Inventory.sum(:ct)
     if params[:expedient][:request_type] == 'Medicina'
-       Inventory.create!(medicine_quantity:params[:expedient][:request_quantity].to_i, expedient_id:1)
+      if @med > params[:expedient][:request_quantity].to_i || @med == params[:expedient][:request_quantity].to_i
+        Inventory.update!(med: @med - params[:expedient][:request_quantity].to_i)
+      end
+    else
+      if @ct > params[:expedient][:request_quantity].to_i || @ct > params[:expedient][:request_quantity].to_i
+        Inventory.update!(ct: @ct - params[:expedient][:request_quantity].to_i)
+      end
+    end
+  end
+
+  def reportes
+		#GENERADOR DE CSV INDICADORES GENERALES   
+    if Expedient.count > 0
+      @archivo_csv = CSV.generate(:encoding => 'windows-1252') do |csv|
+          csv  <<  ["Nombre", "Tipo de Persona", "Documento", "Tipo de Solicitud", "Cantidad Solicitada", "Fecha"]
+          Expedient.all.each do |indicador, i|
+            csv << [indicador.name, indicador.person_type, indicador.document, indicador.request_type, indicador.request_quantity, indicador.created_at.strftime("%d-%m-%Y")]
+          end
+        end
+        send_data @archivo_csv, :filename => "Solicitudes.csv"
+    else
+      redirect_to root_path
+      flash.alert = "No tenemos solicitudes en estos momentos"
     end
   end
 
@@ -61,7 +94,7 @@ class ExpedientsController < ApplicationController
     @expedient.destroy
 
     respond_to do |format|
-      format.html { redirect_to expedients_url, notice: "Expedient was successfully destroyed." }
+      format.html { redirect_to expedients_url, notice: "Solicitud Eliminada con Éxito" }
       format.json { head :no_content }
     end
   end

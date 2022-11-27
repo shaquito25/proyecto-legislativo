@@ -1,5 +1,4 @@
 class Expedient < ApplicationRecord
    has_many :perfils
-   belongs_to :inventory
-   # validates :name, :surname, :person_type, :birth_date, :request_quantity, :document, :email, :request_type, presence: true
+   validates :name, :person_type, :request_quantity, :document, :request_type, presence: true
 end

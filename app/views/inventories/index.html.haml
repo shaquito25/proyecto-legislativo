@@ -1,13 +1,12 @@
 .col-12.col-sm-9.col-md-8.col-lg-12.text-center.f-24
-    %p.verde-bancaribe-1 Última actualización: 22
-
+    %p.verde-bancaribe-1 Última actualización: #{Date.today.strftime("%d-%m-%Y")}
     .col-lg-12.text-center
         .row.justify-content-center{style:"align-items:flex-start"}
             .col-12.col-sm-9.col-lg-5.bg-azul-bancaribe-2.text-center.blanco.border-r-20.m-2.px-4
                 %p.py-4.mx-auto.f-60.h2
                     Inventario
                 %p.mx-auto.f-20.h2
-                    <b>Total: 500 materiales disponibles</b>
+                    <b>Total: #{@total} materiales disponibles</b>
                 %div{style:"display: flex;justify-content: center;align-items: center;"}
                     %hr.border-white{style:"flex: 1; border: none;  height: 2px;"}/
                     %a.btn.btn-primary{"aria-controls" => "bancaribe", "aria-expanded" => "false", "data-bs-toggle" => "collapse", :href => "#bancaribe", :role => "button",:style => "background-color:#002D62"}
@@ -18,16 +17,18 @@
                     .row.justify-content-center
                         .col
                             %p.py-2.mx-auto.f-40.h2
-                                234
+                                =@med
                             %p
                                 <b>Medicinas</b>
                         .col
                             %p.py-2.mx-auto.f-40.h2
-                                12
+                                =@ct
                             %p
                                 <b>Materiales de Construccion</b>
                         %hr.border-white
                 .row.align-items-center.py-1.justify-content-center
                     .col-12.col-sm-9.col-md-7.p-0
                         .f-12.h6.blanco
-                            Última actualización: 22-06-2022
+                            Última actualización
+                            =Date.today.strftime("%d-%m-%Y")
+= link_to "Regresar", root_path, class: "btn btn-secondary border-r-20 ms-5"

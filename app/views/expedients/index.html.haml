@@ -32,13 +32,13 @@
                   %td.text-center= expedient.surname
                   %td.text-center= expedient.person_type
                   %td.text-center= expedient.document
-                  %td.text-center= expedient.birth_date
+                  %td.text-center= expedient.birth_date.strftime("%d-%m-%Y")
                   %td.text-center= expedient.request_type
                   %td.text-center= expedient.request_quantity
                   %td.text-center= expedient.email
                   %td.text-center
-                    = link_to edit_expedient_path(expedient.id), class: "btn btn-primary btn-sm me-1 mt-1", title: "Editar" do
-                      %i{class: "fas fa-edit"}
+                    -# = link_to edit_expedient_path(expedient.id), class: "btn btn-primary btn-sm me-1 mt-1", title: "Editar" do
+                    -#   %i{class: "fas fa-edit"}
                     = link_to expedient_path(expedient.id), class: "btn btn-primary btn-sm me-1 mt-1", title: "Ver Solicitud" do
                       %i{class: "fa-solid fa-eye"}
                     = button_to expedient, method: :delete, data: { confirm: '¿Estas seguro que deseas eliminar la encuesta?' }, class: "btn btn-primary btn-sm me-1 mt-1", title:"Eliminar" do

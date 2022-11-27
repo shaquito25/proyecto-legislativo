@@ -3,6 +3,10 @@
         = simple_form_for(@expedient) do |f|
             = f.error_notification
             = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
+            .container
+                %ul
+                - @expedient.errors.full_messages.each do |message|
+                    %li=message
             = f.input :perfil_id, as: :hidden
             .p-2
                 = f.label "Nombre:"
@@ -15,7 +19,7 @@
                 = f.select :person_type, options_for_select([["Natural", "Natural"], ["Juridico", "Juridico"]]), {prompt: "Selecciona"}, class:"form-select"
             .p-2
                 = f.label "Tipo de Solicitud:"
-                = f.select :request_type, options_for_select([["Medicina", "Medicina"], ["Materiales de construccion", "Materiales de construccion"]]), {prompt: "Selecciona"}, class:"form-select"
+                = f.select :request_type, options_for_select([["Medicina", "Medicina"], ["Materiales de Construccion", "Materiales de Construccion"]]), {prompt: "Selecciona"}, class:"form-select"
             .p-2
                 = f.label "Documento de Identidad:"
                 = f.input_field :document, label: "Documento de Identidad:", class:"form-control"
